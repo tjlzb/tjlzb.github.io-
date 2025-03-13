@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云南昆明中药材交易平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('https://images.unsplash.com/photo-1582481725274-8d13c3a1c08e') fixed;
+            background-size: cover;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: #2c5f2d;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .category-nav {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 25px;
+            background: #fff;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active {
+            background: #d4af37;
+            color: white;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border: 2px solid #2c5f2d;
+            border-radius: 8px;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .price-table th {
+            background: #2c5f2d;
+            color: white;
+        }
+
+        .price-table tr:hover {
+            background: #f8f8f8;
+        }
+
+        .editable-price {
+            color: #d32f2f;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+            background: #ffebee;
+            min-width: 80px;
+            display: inline-block;
+        }
+
+        .data-note {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid #2c5f2d;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#price">实时报价</a></li>
+            <li><a href="#market">期货市场</a></li>
+            <li><a href="#data">行业数据</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>云南昆明中药材交易平台</h1>
+        <p>中国西南地区最大的中药材现货交易市场，覆盖500+种药材和农产品价格信息</p>
+        
+        <div class="category-nav">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="herb">药材类</button>
+            <button class="category-btn" data-category="nut">坚果类</button>
+            <button class="category-btn" data-category="grain">粮油类</button>
+            <button class="category-btn" data-category="dry">干货类</button>
+        </div>
+
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>品类</th>
+                    <th>商品名称</th>
+                    <th>规格等级</th>
+                    <th>产地</th>
+                    <th>批发价 (元/公斤)</th>
+                    <th>零售价 (元/公斤)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-category="herb">
+                    <td>药材类</td>
+                    <td>三七</td>
+                    <td>120头</td>
+                    <td>文山</td>
+                    <td><div class="editable-price" contenteditable>205.00</div></td>
+                    <td><div class="editable-price" contenteditable>260.00</div></td>
+                </tr>
+                <tr data-category="herb">
+                    <td>药材类</td>
+                    <td>天麻</td>
+                    <td>昭通一级</td>
+                    <td>昭通</td>
+                    <td><div class="editable-price" contenteditable>320.00</div></td>
+                    <td><div class="editable-price" contenteditable>380.00</div></td>
+                </tr>
+                <tr data-category="nut">
+                    <td>坚果类</td>
+                    <td>核桃</td>
+                    <td>漾濞大泡</td>
+                    <td>漾濞</td>
+                    <td><div class="editable-price" contenteditable>28.00</div></td>
+                    <td><div class="editable-price" contenteditable>35.00</div></td>
+                </tr>
+                <tr data-category="nut">
+                    <td>坚果类</td>
+                    <td>松子</td>
+                    <td>落水一级</td>
+                    <td>丽江</td>
+                    <td><div class="editable-price" contenteditable>85.00</div></td>
+                    <td><div class="editable-price" contenteditable>110.00</div></td>
+                </tr>
+                <tr data-category="grain">
+                    <td>粮油类</td>
+                    <td>红软米</td>
+                    <td>元阳梯田</td>
+                    <td>红河</td>
+                    <td><div class="editable-price" contenteditable>12.50</div></td>
+                    <td><div class="editable-price" contenteditable>15.80</div></td>
+                </tr>
+                <tr data-category="grain">
+                    <td>粮油类</td>
+                    <td>紫糯米</td>
+                    <td>墨江紫米</td>
+                    <td>普洱</td>
+                    <td><div class="editable-price" contenteditable>18.00</div></td>
+                    <td><div class="editable-price" contenteditable>22.50</div></td>
+                </tr>
+                <tr data-category="dry">
+                    <td>干货类</td>
+                    <td>牛肝菌</td>
+                    <td>切片干货</td>
+                    <td>楚雄</td>
+                    <td><div class="editable-price" contenteditable>260.00</div></td>
+                    <td><div class="editable-price" contenteditable>320.00</div></td>
+                </tr>
+                <tr data-category="dry">
+                    <td>干货类</td>
+                    <td>竹荪</td>
+                    <td>特级筒荪</td>
+                    <td>昭通</td>
+                    <td><div class="editable-price" contenteditable>380.00</div></td>
+                    <td><div class="editable-price" contenteditable>450.00</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="data-note">
+            <h3>数据说明</h3>
+            <ul>
+                <li>价格数据每日9:00更新</li>
+                <li>网站采集数据不对外公开</li>
+                <li>数据来源：昆明国际中药材交易中心</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 分类筛选功能
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                document.querySelectorAll('tr[data-category]').forEach(row => {
+                    row.style.display = (category === 'all' || row.dataset.category === category) 
+                                      ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
